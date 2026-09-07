@@ -678,19 +678,60 @@ if page == "trees" then
 
 			formspec = formspec
 
-.. "image_button[2,0.5;4,1;;character_creator;Skin]"
-.. "image_button[2,1.5;4,1;;vehicules;Vehicules]"
+.. "style_type[label;textcolor=#313131]"
 
-.. "image_button[2,2.5;4,1;;trees;Trees]"
-.. "image_button[2,3.5;4,1;;animals;Animals]"
+.. "style[character_creator;border=false]"
+.. "box[2.15,0.4;1.2,1.2;#9C27B0]" 
+.. "image_button[2.25,0.4;1.2,1.2;mobs.png;character_creator;]"
+.. "label[2.5,1.6;Skin]"
+.. "tooltip[character_creator;Skin]"
 
-.. "image_button[2,4.5;2,1;;nodes;Builds]"
-.. "image_button[4,4.5;2,1;;furnitures;Decorations]"
+.. "style[vehicules;border=false]"
+.. "box[4.35,0.4;1.2,1.2;#E53935]" 
+.. "image_button[4.45,0.4;1.2,1.2;cars.png;vehicules;]"
+.. "label[4.5,1.6;Vehicules]"
+.. "tooltip[vehicules;Vehicules]"
 
-.. "image_button[2,5.5;2,1;;lettermenu;Letters]"
-.. "image_button[4,5.5;2,1;;mathmenu;Maths]"
+.. "style[trees;border=false]"
+.. "box[2.15,2.1;1.2,1.2;#4CAF50]" 
+.. "image_button[2.25,2.1;1.2,1.2;normaltrees.png;trees;]"
+.. "label[2.47,3.3;Trees]"
+.. "tooltip[trees;Trees]"
 
-.. "image_button_exit[2,6.5;4,1;;quit;Back To Game]"
+.. "style[animals;border=false]"
+.. "box[4.35,2.1;1.2,1.2;#00A8FF]" 
+.. "image_button[4.45,2.1;1.2,1.2;mobs_chicken_egg_overlay.png;animals;]"
+.. "label[4.6,3.3;Animals]"
+.. "tooltip[animals;Animals]"
+
+.. "style[nodes;border=false]"
+.. "box[2.15,3.8;1.2,1.2;#FFB300]" 
+.. "image_button[2.25,3.8;1.2,1.2;blocks.png;nodes;]"
+.. "label[2.47,5.0;Builds]"
+.. "tooltip[nodes;Builds]"
+
+.. "style[furnitures;border=false]"
+.. "box[4.35,3.8;1.2,1.2;#FB8C00]" 
+.. "image_button[4.45,3.8;1.2,1.2;chair.png;furnitures;]"
+.. "label[4.25,5.0;Decorations]"
+.. "tooltip[furnitures;Decorations]"
+
+.. "style[lettermenu;border=false]"
+.. "box[2.15,5.5;1.2,1.2;#E91E63]" 
+.. "image_button[2.25,5.5;1.2,1.2;signs.png;lettermenu;]"
+.. "label[2.45,6.7;Letters]"
+.. "tooltip[lettermenu;Letters]"
+
+.. "style[mathmenu;border=false]"
+.. "box[4.35,5.5;1.2,1.2;#00ACC1]" 
+.. "image_button[4.45,5.5;1.2,1.2;computer.png;mathmenu;]"
+.. "label[4.65,6.7;Maths]"
+.. "tooltip[mathmenu;Maths]"
+
+.. "image_button_exit[2.15,7.25;3.4,0.6;;quit;Back To Game]"
+.. "tooltip[quit;Back To Game]"
+
+
 
 			x = x
 y = y + 1
