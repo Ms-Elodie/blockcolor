@@ -2,6 +2,8 @@
 -- Code based on carpets mod included in BlockColor and a modification
 -- of the original trampoline node found on xdecor mod by kilbith
 
+if not source_list then source_list = {} end
+
 for i in ipairs(source_list) do
 	local color = source_list[i][1]
 	local desc = source_list[i][2]
