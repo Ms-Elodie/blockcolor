@@ -133,7 +133,7 @@ function carpet:on_step(dtime)
 		self.vz = 87*get_sign(self.vz)
 	end
 	if math.abs(self.vy) > 87 then
-		self.vz = 87*get_sign(self.vy)
+		self.vy = 87*get_sign(self.vy)
 	end
 
 	self.object:set_velocity({x=self.vx, y=self.vy,z=self.vz})
