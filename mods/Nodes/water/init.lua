@@ -3,6 +3,7 @@ for i in ipairs(source_list) do
 	local name = source_list[i][1]
 	local desc = source_list[i][2]
 	local colour = source_list[i][3]
+	local red, green, blue = source_list[i][4], source_list[i][5], source_list[i][6]
 
 	minetest.register_node("water:" .. name .. "_water_source", {
 		description = desc .. " Water Source",

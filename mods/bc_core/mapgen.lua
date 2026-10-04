@@ -201,7 +201,7 @@ local function register_decorations()
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = { " green " },
+		biomes = { "green" },
 		y_min = 1,
 		y_max = 31000,
 		decoration = "trees:big_green",
@@ -220,7 +220,7 @@ local function register_decorations()
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = { " green " },
+		biomes = { "green" },
 		y_min = 1,
 		y_max = 31000,
 		decoration = "trees:normal_red",
@@ -239,7 +239,7 @@ local function register_decorations()
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = { " green " },
+		biomes = { "green" },
 		y_min = 1,
 		y_max = 31000,
 		decoration = "trees:small_yellow",
@@ -260,7 +260,7 @@ local function register_decorations()
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = { " white " },
+		biomes = { "white" },
 		y_min = 1,
 		y_max = 31000,
 		decoration = "trees:big_blue",
@@ -279,7 +279,7 @@ local function register_decorations()
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = { " white " },
+		biomes = { "white" },
 		y_min = 1,
 		y_max = 31000,
 		decoration = "trees:normal_pink",
@@ -300,7 +300,7 @@ local function register_decorations()
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = { " yellow " },
+		biomes = { "yellow" },
 		y_min = 1,
 		y_max = 31000,
 		decoration = "trees:normal_black",
@@ -318,7 +318,7 @@ local function register_decorations()
 			octaves = 3,
 			persist = 0.66
 		},
-		biomes = { " yellow " },
+		biomes = { "yellow" },
 		y_min = 1,
 		y_max = 31000,
 		decoration = "trees:small_white",
