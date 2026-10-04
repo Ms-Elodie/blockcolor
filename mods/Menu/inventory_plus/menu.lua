@@ -21,6 +21,20 @@ inventory_plus.buttons = {}
 -- default inventory page
 inventory_plus.default = "main"
 
+local page_titles = {
+	nodes = "Build",
+	nodes2 = "Build / page 2",
+	animals = "Animals and tools",
+	furnitures = "Decorations",
+	furnitures2 = "Decorations / page 2",
+	vehicules = "Vehicles",
+	planets = "Planets",
+	trees = "Trees",
+	mathmenu = "Maths",
+	lettermenu = "Letters",
+	lettermenu2 = "Letters / page 2",
+}
+
 -- register_button
 inventory_plus.register_button = function(player, name, label)
 
@@ -73,7 +87,15 @@ inventory_plus.get_formspec = function(player, page)
 	local formspec = "size[8,7.5]"
 		.. bc_core.gui_bg
 		.. bc_core.gui_bg_img
-		.. ""
+		.. "style_type[label;textcolor=#F5F7FA]"
+
+	if page ~= "main" then
+		local title = minetest.formspec_escape(page_titles[page] or "Blockcolor")
+		formspec = formspec
+			.. "box[0,0.05;8,0.35;#243449]"
+			.. "box[0.25,0.14;0.08,0.16;#00BCD4]"
+			.. "label[0.48,0.07;" .. title .. "]"
+	end
 
 	-- nodes page
 	if page == "nodes" then
@@ -670,72 +692,54 @@ if page == "trees" then
 
 	-- main page
 	if page == "main" then
+		local player_name = player:get_player_name()
+		inventory_plus.buttons[player_name] = inventory_plus.buttons[player_name] or {}
 
-		-- buttons
-		local x, y = 2, 0
+		formspec = formspec
+			.. "box[0.25,0.25;7.5,0.95;#243449]"
+			.. "box[0.25,0.25;0.12,0.95;#00BCD4]"
+			.. "label[0.58,0.34;Blockcolor]"
+			.. "label[0.58,0.72;Choose a collection to fill your inventory]"
+			.. "box[5.72,0.58;0.18,0.18;#FFFFFF]"
+			.. "box[5.97,0.58;0.18,0.18;#171717]"
+			.. "box[6.22,0.58;0.18,0.18;#E53935]"
+			.. "box[6.47,0.58;0.18,0.18;#FB8C00]"
+			.. "box[6.72,0.58;0.18,0.18;#FDD835]"
+			.. "box[6.97,0.58;0.18,0.18;#E91E63]"
+			.. "box[7.22,0.58;0.18,0.18;#43A047]"
+			.. "box[7.47,0.58;0.18,0.18;#1E88E5]"
 
-		for k, v in pairs(inventory_plus.buttons[player:get_player_name()]) do
+		local cards = {
+			{ name = "character_creator", label = "Skin", icon = "mobs.png", color = "#6A1B9A" },
+			{ name = "vehicules", label = "Vehicles", icon = "cars.png", color = "#C62828" },
+			{ name = "trees", label = "Trees", icon = "normaltrees.png", color = "#2E7D32" },
+			{ name = "animals", label = "Animals", icon = "mobs_chicken_egg_overlay.png", color = "#0277BD" },
+			{ name = "nodes", label = "Build", icon = "blocks.png", color = "#8D6E00" },
+			{ name = "furnitures", label = "Decorations", icon = "chair.png", color = "#BF360C" },
+			{ name = "lettermenu", label = "Letters", icon = "signs.png", color = "#AD1457" },
+			{ name = "mathmenu", label = "Maths", icon = "computer.png", color = "#00838F" },
+		}
+
+		for index, card in ipairs(cards) do
+			local column = (index - 1) % 4
+			local row = math.floor((index - 1) / 4)
+			local x = 0.32 + column * 1.88
+			local y = 1.48 + row * 2.22
+			local field = minetest.formspec_escape(card.name)
+			local label = minetest.formspec_escape(card.label)
 
 			formspec = formspec
-
-.. "style_type[label;textcolor=#313131]"
-
-.. "style[character_creator;border=false]"
-.. "box[2.15,0.4;1.2,1.2;#9C27B0]" 
-.. "image_button[2.25,0.4;1.2,1.2;mobs.png;character_creator;]"
-.. "label[2.5,1.6;Skin]"
-.. "tooltip[character_creator;Skin]"
-
-.. "style[vehicules;border=false]"
-.. "box[4.35,0.4;1.2,1.2;#E53935]" 
-.. "image_button[4.45,0.4;1.2,1.2;cars.png;vehicules;]"
-.. "label[4.5,1.6;Vehicules]"
-.. "tooltip[vehicules;Vehicules]"
-
-.. "style[trees;border=false]"
-.. "box[2.15,2.1;1.2,1.2;#4CAF50]" 
-.. "image_button[2.25,2.1;1.2,1.2;normaltrees.png;trees;]"
-.. "label[2.47,3.3;Trees]"
-.. "tooltip[trees;Trees]"
-
-.. "style[animals;border=false]"
-.. "box[4.35,2.1;1.2,1.2;#00A8FF]" 
-.. "image_button[4.45,2.1;1.2,1.2;mobs_chicken_egg_overlay.png;animals;]"
-.. "label[4.6,3.3;Animals]"
-.. "tooltip[animals;Animals]"
-
-.. "style[nodes;border=false]"
-.. "box[2.15,3.8;1.2,1.2;#FFB300]" 
-.. "image_button[2.25,3.8;1.2,1.2;blocks.png;nodes;]"
-.. "label[2.47,5.0;Builds]"
-.. "tooltip[nodes;Builds]"
-
-.. "style[furnitures;border=false]"
-.. "box[4.35,3.8;1.2,1.2;#FB8C00]" 
-.. "image_button[4.45,3.8;1.2,1.2;chair.png;furnitures;]"
-.. "label[4.25,5.0;Decorations]"
-.. "tooltip[furnitures;Decorations]"
-
-.. "style[lettermenu;border=false]"
-.. "box[2.15,5.5;1.2,1.2;#E91E63]" 
-.. "image_button[2.25,5.5;1.2,1.2;signs.png;lettermenu;]"
-.. "label[2.45,6.7;Letters]"
-.. "tooltip[lettermenu;Letters]"
-
-.. "style[mathmenu;border=false]"
-.. "box[4.35,5.5;1.2,1.2;#00ACC1]" 
-.. "image_button[4.45,5.5;1.2,1.2;computer.png;mathmenu;]"
-.. "label[4.65,6.7;Maths]"
-.. "tooltip[mathmenu;Maths]"
-
-.. "image_button_exit[2.15,7.25;3.4,0.6;;quit;Back To Game]"
-.. "tooltip[quit;Back To Game]"
-
-
-
-			x = x
-y = y + 1
+				.. "box[" .. x .. "," .. y .. ";1.7,1.82;" .. card.color .. "]"
+				.. "style[" .. field .. ";bgcolor=#00000000;border=false]"
+				.. "image_button[" .. (x + 0.27) .. "," .. (y + 0.12)
+				.. ";1.16,1.12;" .. card.icon .. ";" .. field .. ";]"
+				.. "label[" .. (x + 0.14) .. "," .. (y + 1.38) .. ";" .. label .. "]"
+				.. "tooltip[" .. field .. ";" .. label .. "]"
 		end
+
+		formspec = formspec
+			.. "style[quit;bgcolor=#243449;textcolor=#F5F7FA;border=false]"
+			.. "button_exit[2.5,6.45;3,0.62;quit;Back to game]"
 	end
 
 	return formspec
@@ -793,14 +797,6 @@ minetest.register_on_player_receive_fields(function(player, formname, fields)
 
 		inventory_plus.set_inventory_formspec(player,
 			inventory_plus.get_formspec(player, "mathmenu"))
-
-		return
-	end
-
-	if fields.lettermenu2 then
-
-		inventory_plus.set_inventory_formspec(player,
-			inventory_plus.get_formspec(player, "mathmenu2"))
 
 		return
 	end
